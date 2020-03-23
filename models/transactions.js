@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BIGINT,
         },
         amount: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.DOUBLE,
             allowNull: false
         },
         type: {
@@ -26,19 +26,13 @@ module.exports = function (sequelize, DataTypes) {
         parent_id: {
             type: DataTypes.BIGINT,
             allowNull: true
-        },
-        created_at: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-            allowNull: false
-        },
-        updated_at: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-            allowNull: false
         }
     }, {
+        // don't forget to enable timestamps!
+        timestamps: true,
         underscored: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
     });
 
     return Transactions;

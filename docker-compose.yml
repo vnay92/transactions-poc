@@ -38,14 +38,18 @@ services:
                 max-size: "200k"
                 max-file: "10"
 
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+
     app:
         build:
             context: .
         depends_on:
             - mysql
             - redis
-        links:
-            - mysql
         volumes:
             - "./:/app"
         ports:
