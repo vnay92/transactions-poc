@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+    redis:
+        image: redis:alpine
+        volumes:
+            - "./.data/redis:/data"
+        logging:
+            options:
+                max-size: "200k"
+                max-file: "10"
+
+    redis-cli:
+        image: redis:alpine
+        depends_on:
+            - redis
+        links:
+            - redis
+        command: redis-cli -h redis
+        logging:
+            options:
+                max-size: "200k"
+                max-file: "10"
+
+    mysql:
+        image: 'mysql:5.7'
+        volumes:
+            - "./.data/mysql:/var/lib/mysql"
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_DATABASE=application
+            - MYSQL_USER=application
+            - MYSQL_PASSWORD=application123
+            - MYSQL_ROOT_PASSWORD=root
+        logging:
+            options:
+                max-size: "200k"
+                max-file: "10"
+
+    app:
+        build:
+            context: .
+        depends_on:
+            - mysql
+            - redis
+        links:
+            - mysql
+        volumes:
+            - "./:/app"
+        ports:
+            - 3000:3000
+            - 9229:9229
+        environment:
+            - DEBUG=app:*
+        command: "./node_modules/.bin/nodemon --inspect-brk=0.0.0.0 ./bin/www"
+        logging:
+            options:
+                max-size: "200k"
+                max-file: "10"
