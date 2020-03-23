@@ -2,10 +2,14 @@
 /*jslint node: true */
 'use strict';
 
-class TransactionService {
+const BaseController = require('controllers/BaseController');
+const models = require('models');
 
-    async getAll() {
-        return [{}];
+class TransactionService extends BaseController {
+
+    constructor() {
+        super();
+        this.model = models.transactions;
     }
 }
 
