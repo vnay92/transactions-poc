@@ -20,3 +20,7 @@
 ## To Cleanup and Delete containers
 
 `./bin/cleanup`
+
+## Tests
+
+Tests in Postman usin the collection: `PocketAces Test Suite.postman_collection.json`
