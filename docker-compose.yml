@@ -57,7 +57,7 @@ services:
             - 9229:9229
         environment:
             - DEBUG=app:*
-        command: "./node_modules/.bin/nodemon --inspect-brk=0.0.0.0 ./bin/www"
+        command: "./node_modules/.bin/nodemon ./bin/www"
         logging:
             options:
                 max-size: "200k"
