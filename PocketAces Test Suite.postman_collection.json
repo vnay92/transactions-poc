@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "11547422-b05d-4766-96b7-0262802c0cf1",
+		"name": "PocketAces Test Suite",
+		"description": "Testing Suite for Pocket Aces API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0892e158-2433-4032-82c3-f4e06ed631f3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\": 123,\n\t\"type\": \"car_wash_tax_2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/transactionservice/transaction/15",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactionservice",
+						"transaction",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2b951ab-e0dc-4ec7-ba5f-4e32ae6e35ae",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/transactionservice/transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactionservice",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction Ids for a Type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "106a8e66-6e9a-4a87-85d6-a57b8ceaf7da",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/transactionservice/types/car_wash",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactionservice",
+						"types",
+						"car_wash"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Sum of all child transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "80232161-5d85-4e89-9c94-ddd353a00f3c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/transactionservice/sum/12",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactionservice",
+						"sum",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
