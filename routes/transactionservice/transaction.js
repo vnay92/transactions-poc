@@ -35,7 +35,12 @@ router.put('/:transactionId', [
             status: 'ok'
         });
     } catch (error) {
-        return res.status(500).send(error);
+        console.error(error);
+        return res.status(500).send({
+            errors: [
+                error.message
+            ]
+        });
     }
 });
 

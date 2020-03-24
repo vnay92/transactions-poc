@@ -11,7 +11,7 @@ const transactionController = new TransactionController();
 /* GET users listing. */
 router.get('/:type', async (req, res) => {
     try {
-        const response = await transactionController.getListOfTransactionIdsByType(req.params.type);
+        const response = await transactionController.getListOfTransactionIdsByType(req);
         return res.json(response);
     } catch (error) {
         return res.status(500).send(error);
